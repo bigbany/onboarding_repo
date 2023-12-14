@@ -10,7 +10,7 @@ pipeline {
     stages {
       stage('dockerhub check in'){
         steps{
-          echo $DOCKERHUB_CREDENTIALS
+          sh 'echo $DOCKERHUB_CREDENTIALS'
         }
       }
 
