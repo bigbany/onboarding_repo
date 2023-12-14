@@ -40,17 +40,8 @@ pipeline {
     }
 
 
-post {
-       success {
-        
-           echo 'Docker image build, login, push, and local image cleanup successful!'
-       }
 
-       failure {
-           echo 'One or more stages failed. Check the logs for details.'
-       }
-   }
-
+    }
 }
 
-}
+
