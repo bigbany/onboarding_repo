@@ -22,21 +22,7 @@ pipeline {
       }
 
 
-        stage('build') {
-            steps {
-                echo 'building the application...'
-            }
-        }
-        stage('test') {
-            steps {
-                echo 'testing the application...'
-            }
-        }
-        stage('deploy') {
-            steps {
-                echo 'deploying the application...'
-            }
-        }
+
 
         stage('dockerhub check in'){
         steps{
@@ -44,6 +30,25 @@ pipeline {
         }
       }
 
+       stage('Docker Push') {
+            steps {
+                script {
+                  sh 'docker push $DOCKERREPO:$BUILD_NUMBER'
+            }
+        }
 
     }
+
+
+post {
+       success {
+        
+           echo 'Docker image build, login, push, and local image cleanup successful!'
+       }
+
+       failure {
+           echo 'One or more stages failed. Check the logs for details.'
+       }
+   }
+
 }
