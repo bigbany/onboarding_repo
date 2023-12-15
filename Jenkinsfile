@@ -22,7 +22,7 @@ pipeline {
                     def scriptContent = readFile(scriptPath).trim()
 
                     // 변수 값 출력
-                    echo "원래 변수 값: $HOOK_URL"
+                  sh  'echo "원래 변수 값: $HOOK_URL"'
 
                     // 변수 수정
                  //   scriptContent = scriptContent.replaceAll(/VAR_NAME=.+/, 'VAR_NAME="new_value"')
